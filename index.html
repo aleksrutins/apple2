@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="emulator.css">
+    <title>Apple][js2</title>
+</head>
+<audio src="beep-02.mp3" id="beep"></audio>
+
+<body>
+    <div id="text"></div>
+    <script type="module">
+        import apple2 from './apple2.js';
+        let cnvs = document.createElement('canvas'), text = document.getElementById('text'), beep = document.getElementById('beep');
+        apple2.out = text;
+        cnvs.height = window.innerHeight;
+        cnvs.width = window.innerWidth;
+        document.body.appendChild(cnvs);
+        var ctx = cnvs.getContext('2d');
+        text.style.width = (window.innerWidth - 8) + 'px';
+        text.style.height = (window.innerHeight - 8) + 'px';
+        text.innerHTML += '<span style="align-self: center">Apple ][</span><br/>';
+        beep.play();
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key == 'l') {
+                //load folder with wasm/js
+            }
+        });
+        var prmpt = () => {
+            apple2.input('] ', (cmd) => apple2.parseCommand(cmd, prmpt));
+        };
+        prmpt();
+    </script>
+</body>
+
+</html>

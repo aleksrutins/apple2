@@ -1,0 +1,23 @@
+@font-face {
+  font-family: appleii;
+  src: url(font/PrintChar21.ttf);
+}
+canvas {
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 6;
+}
+div#text {
+  font-family: appleii;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  color: white;
+  position: absolute;
+  padding: 4px;
+  top: 0;
+  left: 0;
+  z-index: 3;
+}
