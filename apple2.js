@@ -32,6 +32,11 @@ export default {
         });
         // while (!this.vars[args[1]]);
         break;
+      case "beep":
+        beep.play();
+        break;
+      default:
+        this.out.innerHTML += "<span>?SYNTAX ERR</span>";
     }
     for (let varble in this.vars) {
       delete window[varble];
