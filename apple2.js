@@ -1,6 +1,7 @@
 export default {
   out: null,
   vars: {},
+  prog: [],
   parseCommand(cmd, then) {
     let cmdName = cmd.split(" ")[0].toLowerCase();
     let args = cmd
@@ -36,7 +37,9 @@ export default {
         beep.play();
         break;
       default:
-        this.out.innerHTML += "<span>?SYNTAX ERR</span>";
+        if (cmd.split(" ")[1] == "=") {
+          this.vars[cmdName] = eval(cmd.split(" ")[2]);
+        } else this.out.innerHTML += "<span>?SYNTAX ERR</span>";
     }
     for (let varble in this.vars) {
       delete window[varble];
